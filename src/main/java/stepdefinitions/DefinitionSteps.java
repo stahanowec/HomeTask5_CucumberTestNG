@@ -12,7 +12,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
-import static java.lang.Thread.sleep;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -85,19 +84,16 @@ public class DefinitionSteps {
     }
 
     @And("User clicks on first product")
-    public void choseFirstProduct() throws InterruptedException {
+    public void choseFirstProduct() {
         searchResultsPage = pageFactoryManager.getSearchResultsPage();
-//        searchResultsPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
-//        searchResultsPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, searchResultsPage.getProductImage());
-        sleep(1500);
+        searchResultsPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
         searchResultsPage.clickOnFirstProduct();
     }
 
 
     @And("User clicks Add to Cart button in product page")
-    public void clickAddToCartButton() throws InterruptedException {
+    public void clickAddToCartButton() {
         productPage = pageFactoryManager.getProductPage();
-        sleep(1500);
         productPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
         productPage.waitForAjaxToComplete(DEFAULT_TIMEOUT);
         productPage.waitForAjaxToCompletePdp(DEFAULT_TIMEOUT);
